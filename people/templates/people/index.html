@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1> Todas las Publicaciones </h1>
+    <div class="publicaciones">
+        {% for publicacion in publicaciones %}
+        <div class="publicacion">
+            <input type="hidden" name="" id="idPublicacion" value="{{ publicacion.id }}">
+            <h3>{{ publicacion.username }}</h3>
+            <p>{{publicacion.timestamp}}</p>
+            <p>{{publicacion.content}}</p>
+            <p id="likes">{{publicacion.likes}} likes</p>
+            <button id="likeBtn"> Dar like </button>
+            <hr>
+        </div>
+        {% empty %}
+        <h2> No hay publicaciones </h2>
+        {% endfor %}
+
+    </div>
+
+    <script src="{% static 'js/likes.js' %}"></script>
+    
+
+{% endblock %}
